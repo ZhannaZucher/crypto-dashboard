@@ -72,6 +72,7 @@ header {
 
         img {
           height: 17px;
+          width: auto;
           object-fit: cover;
           margin-right: 3px;
           transform: translate(3px, -4px);
@@ -149,6 +150,7 @@ header {
 
           img {
             height: 14px;
+            width: auto;
             margin-left: 5px;
           }
         }
