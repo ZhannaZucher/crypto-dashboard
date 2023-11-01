@@ -1,6 +1,7 @@
 import "../styles/index.scss"
 import type { Metadata } from "next"
 import Head from "next/head"
+import Providers from "./store/provider"
 
 export const metadata: Metadata = {
   title: "Crypto Watch App",
@@ -17,7 +18,9 @@ export default function RootLayout({
       <Head>
         <link rel="shortcut icon" href="/icon.png" />
       </Head>
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }
