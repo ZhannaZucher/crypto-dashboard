@@ -183,6 +183,7 @@
 
       > img {
         height: 12px;
+        width: auto;
         display: block;
         margin-left: auto;
         cursor: pointer;
@@ -206,6 +207,7 @@
         img {
           object-fit: cover;
           height: 15px;
+          width: auto;
         }
       }
       .infos {

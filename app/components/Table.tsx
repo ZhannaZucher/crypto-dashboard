@@ -2,12 +2,15 @@
 
 import { selectCoinsData, useAppSelector } from "../store/selectors"
 import { useState } from "react"
+import TableRow from "./TableRow"
+import { mockData } from "@/db"
 
 const Table = () => {
   const [rangeNumber, setRangeNumber] = useState("100")
   const [orderBy, setOrderBy] = useState("")
-  const coinsData = useAppSelector(selectCoinsData)
-  console.log(coinsData)
+  const data = useAppSelector(selectCoinsData)
+  //using mock data when API response fails because of too many requests
+  const coinsData = data ? data : mockData
 
   const tableHeader = [
     "Price",
@@ -23,7 +26,7 @@ const Table = () => {
 
   return (
     <div className="table-container">
-      <div className="table-header">
+      <ul className="table-header">
         <div className="range-container">
           <span>
             {"Top" + " "}
@@ -61,7 +64,13 @@ const Table = () => {
             <label htmlFor={el}>{el}</label>
           </li>
         ))}
-      </div>
+      </ul>
+      {coinsData &&
+        coinsData
+          .slice(0, parseInt(rangeNumber))
+          .map((coin, index) => (
+            <TableRow key={coin.id} coin={coin} index={index} />
+          ))}
     </div>
   )
 }
