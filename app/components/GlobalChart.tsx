@@ -9,10 +9,13 @@ import {
 import { coinsDataFetch } from "../store/coinsDataSlice"
 import { Treemap, Tooltip } from "recharts"
 import { TreemapTooltip, colorPicker, excludeCoin } from "@/utils/utilsTreemap"
+import { mockData } from "@/db"
 
 const GlobalChart = () => {
   const dispatch = useAppDispatch()
-  const coinsData = useAppSelector(selectCoinsData)
+  const data = useAppSelector(selectCoinsData)
+  //using mock data when API response fails because of too many requests
+  const coinsData = data ? data : mockData
 
   useEffect(() => {
     dispatch(coinsDataFetch())
@@ -26,7 +29,7 @@ const GlobalChart = () => {
           name:
             coinsData[i].symbol.toUpperCase() +
             " " +
-            coinsData[i].market_cap_change_percentage_24h.toFixed(1) +
+            coinsData[i].market_cap_change_percentage_24h?.toFixed(1) +
             "%",
           size: coinsData[i].market_cap,
           fill: colorPicker(coinsData[i].price_change_percentage_24h),
