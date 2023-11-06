@@ -18,6 +18,7 @@ const Table = () => {
     "Volume",
     "1H",
     "1D",
+    "1W",
     "1M",
     "6M",
     "1Y",
