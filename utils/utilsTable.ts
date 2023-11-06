@@ -15,7 +15,7 @@ export const marketCapFormater = (number: number) => {
   return Number(newNumber.join(""))
 }
 
-//handle fixed tanle header
+//handle fixed table header
 export const handleTableHeader = () => {
   // when more than 145px are scrolled on Y axis the position of the table-header becomes fixed
   if (window.scrollY > 145) {
