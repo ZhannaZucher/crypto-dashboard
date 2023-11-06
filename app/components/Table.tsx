@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client"
 
 import { selectCoinsData, useAppSelector } from "../store/selectors"
@@ -75,9 +76,109 @@ const Table = () => {
           </li>
         ))}
       </ul>
+
       {coinsData &&
         coinsData
           .slice(0, parseInt(rangeNumber))
+          .sort((a, b) => {
+            switch (orderBy) {
+              case "Price":
+                return b.current_price - a.current_price
+
+              case "Pricereverse":
+                return a.current_price - b.current_price
+
+              case "MarketCap":
+                return b.market_cap - a.market_cap
+
+              case "MarketCapreverse":
+                return a.market_cap - b.market_cap
+
+              case "Volume":
+                return b.total_volume - a.total_volume
+
+              case "Volumereverse":
+                return a.total_volume - b.total_volume
+
+              case "1H":
+                return (
+                  b.price_change_percentage_1h_in_currency -
+                  a.price_change_percentage_1h_in_currency
+                )
+
+              case "1Hreverse":
+                return (
+                  a.price_change_percentage_1h_in_currency -
+                  b.price_change_percentage_1h_in_currency
+                )
+
+              case "1D":
+                return (
+                  b.market_cap_change_percentage_24h -
+                  a.market_cap_change_percentage_24h
+                )
+
+              case "1Dreverse":
+                return (
+                  a.market_cap_change_percentage_24h -
+                  b.market_cap_change_percentage_24h
+                )
+
+              case "1W":
+                return (
+                  b.price_change_percentage_7d_in_currency -
+                  a.price_change_percentage_7d_in_currency
+                )
+
+              case "1Wreverse":
+                return (
+                  a.price_change_percentage_7d_in_currency -
+                  b.price_change_percentage_7d_in_currency
+                )
+
+              case "1M":
+                return (
+                  b.price_change_percentage_30d_in_currency -
+                  a.price_change_percentage_30d_in_currency
+                )
+
+              case "1Mreverse":
+                return (
+                  a.price_change_percentage_30d_in_currency -
+                  b.price_change_percentage_30d_in_currency
+                )
+
+              case "6M":
+                return (
+                  b.price_change_percentage_200d_in_currency -
+                  a.price_change_percentage_200d_in_currency
+                )
+
+              case "6Mreverse":
+                return (
+                  a.price_change_percentage_200d_in_currency -
+                  b.price_change_percentage_200d_in_currency
+                )
+
+              case "1Y":
+                return (
+                  b.price_change_percentage_1y_in_currency -
+                  a.price_change_percentage_1y_in_currency
+                )
+
+              case "1Yreverse":
+                return (
+                  a.price_change_percentage_1y_in_currency -
+                  b.price_change_percentage_1y_in_currency
+                )
+
+              case "ATH":
+                return b.ath_change_percentage - a.ath_change_percentage
+
+              case "ATHreverse":
+                return a.ath_change_percentage - b.ath_change_percentage
+            }
+          })
           .map((coin, index) => (
             <TableRow key={coin.id} coin={coin} index={index} />
           ))}
