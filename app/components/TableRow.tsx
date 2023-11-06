@@ -5,6 +5,7 @@ import infoIcon from "@/public/info-icon.svg"
 import Link from "next/link"
 import { marketCapFormater, priceFormater } from "@/utils/utilsTable"
 import PercentChange from "./PercentChange"
+import StarIcon from "./StarIcon"
 
 type TableRowProps = {
   coin: Coin
@@ -15,7 +16,7 @@ const TableRow = ({ coin, index }: TableRowProps) => {
   return (
     <div className="table-line">
       <div className="infos-container">
-        <span>*</span>
+        <StarIcon coinId={coin.id} />
         <p>{index + 1}</p>
         <div className="img">
           <Image src={coin.image} height={15} width={15} alt="logo" />
