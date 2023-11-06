@@ -1,9 +1,11 @@
 "use client"
 
 import { selectCoinsData, useAppSelector } from "../store/selectors"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import TableRow from "./TableRow"
 import { mockData } from "@/db"
+import ScrollToTop from "./ScrollToTop"
+import { handleTableHeader } from "@/utils/utilsTable"
 
 const Table = () => {
   const [rangeNumber, setRangeNumber] = useState("100")
@@ -25,6 +27,11 @@ const Table = () => {
     "ATH",
   ]
 
+  useEffect(() => {
+    window.addEventListener("scroll", handleTableHeader)
+    return () => window.removeEventListener("scroll", handleTableHeader)
+  }, [])
+
   return (
     <div className="table-container">
       <ul className="table-header">
@@ -44,6 +51,8 @@ const Table = () => {
             value={rangeNumber}
             onChange={(e) => setRangeNumber(e.target.value)}
           />
+          {/* display: none */}
+          <ScrollToTop />
         </div>
         {tableHeader.map((el) => (
           <li key={el}>
