@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 
 type PercentChangeProps = {
-  percent: number | undefined
+  percent: number | null
 }
 
 //checks whether global market cap is positive or negative and render value in related colour
@@ -23,7 +23,7 @@ const PercentChange = ({ percent }: PercentChangeProps) => {
   }, [percent])
   return (
     <p className="percent-change-container" style={{ color }}>
-      {/* si on a le % on l'arrondit à un chiffre après la vigule */}
+      {/* if we are the percent we round to one number after comma, if null render '-' */}
       {percent ? percent.toFixed(1) + "%" : "-"}
     </p>
   )
