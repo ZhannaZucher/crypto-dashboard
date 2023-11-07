@@ -103,8 +103,12 @@ const Table = () => {
           })
           .filter((coin) => {
             if (showFavList) {
-              let list = window.localStorage.coinList.split(",")
-              if (list.includes(coin.id)) {
+              if (window.localStorage.coinList) {
+                let list = window.localStorage.coinList.split(",")
+                if (list.includes(coin.id)) {
+                  return coin
+                }
+              } else {
                 return coin
               }
             } else {
