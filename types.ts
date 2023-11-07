@@ -128,3 +128,8 @@ export type Coin = {
   price_change_percentage_30d_in_currency: number | null
   price_change_percentage_7d_in_currency: number | null
 }
+
+export type CoinPrices = {
+  date: string
+  price: number
+}

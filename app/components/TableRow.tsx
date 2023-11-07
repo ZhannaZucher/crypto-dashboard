@@ -1,3 +1,5 @@
+"use client"
+
 import { Coin } from "@/types"
 import Image from "next/image"
 import icon from "@/public/chart-icon.svg"
@@ -6,6 +8,9 @@ import Link from "next/link"
 import { marketCapFormater, priceFormater } from "@/utils/utilsTable"
 import PercentChange from "./PercentChange"
 import StarIcon from "./StarIcon"
+import dynamic from "next/dynamic"
+import { useState } from "react"
+const CoinChart = dynamic(() => import("./CoinChart"), { ssr: false })
 
 type TableRowProps = {
   coin: Coin
@@ -13,6 +18,8 @@ type TableRowProps = {
 }
 
 const TableRow = ({ coin, index }: TableRowProps) => {
+  const [showChart, setShowChart] = useState(false)
+
   return (
     <div className="table-line">
       <div className="infos-container">
@@ -23,8 +30,15 @@ const TableRow = ({ coin, index }: TableRowProps) => {
         </div>
 
         <div className="infos">
-          <div className="chart-img">
+          <div
+            className="chart-img"
+            onMouseEnter={() => setShowChart(true)}
+            onMouseLeave={() => setShowChart(false)}
+          >
             <Image src={icon} alt="chart-icon" priority />
+            <div className="chart-container" id={coin.name}>
+              {showChart && <CoinChart coinId={coin.id} coinName={coin.name} />}
+            </div>
           </div>
           <h4>{coin.name}</h4>
           <span>- {coin.symbol.toUpperCase()}</span>
@@ -32,7 +46,7 @@ const TableRow = ({ coin, index }: TableRowProps) => {
             target="_blank"
             href={
               "https://www.coingecko.com/fr/pi%C3%A8ces/" +
-              coin.name.toLowerCase().replaceAll(" ", "-")
+              coin.id.toLowerCase()
             }
           >
             <Image
