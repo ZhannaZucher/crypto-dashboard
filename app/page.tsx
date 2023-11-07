@@ -1,10 +1,11 @@
 import HeaderInfos from "./components/HeaderInfos"
-import dynamic from "next/dynamic"
+// import dynamic from "next/dynamic"
 import Table from "./components/Table"
 import ScrollToTop from "./components/ScrollToTop"
-const GlobalChart = dynamic(() => import("./components/GlobalChart"), {
-  ssr: false,
-})
+import GlobalChart from "./components/GlobalChart"
+// const GlobalChart = dynamic(() => import("./components/GlobalChart"), {
+//   ssr: false,
+// })
 
 export default function Home() {
   return (
