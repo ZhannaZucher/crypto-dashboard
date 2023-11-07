@@ -8,4 +8,5 @@ export const useAppDispatch = () => useDispatch<AppDispatch>()
 
 export const selectCoinsData = (state: RootState) => state.coinsData.data
 export const selectStableCoin = (state: RootState) =>
-  state.stableCoin.showStable
+  state.filterList.showStable
+export const selectCoinList = (state: RootState) => state.filterList.showList

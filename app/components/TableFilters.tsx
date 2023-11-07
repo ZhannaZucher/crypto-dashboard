@@ -3,15 +3,20 @@ import Image from "next/image"
 import star from "@/public/star-full.svg"
 import { useAppDispatch } from "../store/selectors"
 import { useEffect, useState } from "react"
-import { setStableState } from "../store/stableCoinSlice"
+import { setListDisplay, setStableState } from "../store/filterListSlice"
 
 const TableFilters = () => {
   const [showStable, setShowStable] = useState(true)
+  const [showFavList, setShowFavList] = useState(false)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(setStableState(showStable))
   }, [showStable, dispatch])
+
+  useEffect(() => {
+    dispatch(setListDisplay(showFavList))
+  }, [showFavList, dispatch])
 
   return (
     <div className="table-filters">
@@ -27,10 +32,16 @@ const TableFilters = () => {
             {showStable ? "With stable coin" : "Without stable coin"}
           </label>
         </div>
-        <div className="no-list-btn">
+        <div
+          className={showFavList ? "no-list-btn" : "no-list-btn active"}
+          onClick={() => setShowFavList(false)}
+        >
           <p>No list</p>
         </div>
-        <div className="fav-list">
+        <div
+          className={showFavList ? "fav-list active" : "fav-list"}
+          onClick={() => setShowFavList(true)}
+        >
           <p>Favorites list</p>
           <Image src={star} alt="star" height={14} />
         </div>
