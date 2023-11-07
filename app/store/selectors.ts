@@ -7,3 +7,5 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 export const useAppDispatch = () => useDispatch<AppDispatch>()
 
 export const selectCoinsData = (state: RootState) => state.coinsData.data
+export const selectStableCoin = (state: RootState) =>
+  state.stableCoin.showStable

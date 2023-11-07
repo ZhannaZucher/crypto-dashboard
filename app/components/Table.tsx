@@ -1,19 +1,26 @@
 // @ts-nocheck
 "use client"
 
-import { selectCoinsData, useAppSelector } from "../store/selectors"
+import {
+  selectCoinsData,
+  selectStableCoin,
+  useAppSelector,
+} from "../store/selectors"
 import { useEffect, useState } from "react"
 import TableRow from "./TableRow"
 import { mockData } from "@/db"
 import ScrollToTop from "./ScrollToTop"
-import { handleTableHeader } from "@/utils/utilsTable"
+import { handleTableHeader, isUnstableCoin } from "@/utils/utilsTable"
 
 const Table = () => {
   const [rangeNumber, setRangeNumber] = useState("100")
   const [orderBy, setOrderBy] = useState("")
+
   const data = useAppSelector(selectCoinsData)
-  //using mock data when API response fails because of too many requests
+  //using mock data when API response fails due to "too many requests"
   const coinsData = data ? data : mockData
+
+  const showStable = useAppSelector(selectStableCoin)
 
   const tableHeader = [
     "Price",
@@ -80,6 +87,19 @@ const Table = () => {
       {coinsData &&
         coinsData
           .slice(0, parseInt(rangeNumber))
+          .filter((coin) => {
+            //if we want the coins list with stable coins
+            if (showStable) {
+              //return each one
+              return coin
+            } else {
+              //for rendering coins list excluding stable coins, we check if the coin is unstable and return it
+              if (isUnstableCoin(coin.symbol)) {
+                return coin
+              }
+            }
+          })
+
           .sort((a, b) => {
             switch (orderBy) {
               case "Price":
