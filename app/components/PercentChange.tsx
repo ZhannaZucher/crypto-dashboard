@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 
 type PercentChangeProps = {
-  percent: number | null
+  percent: number | null | undefined
 }
 
 //checks whether global market cap is positive or negative and render value in related colour
