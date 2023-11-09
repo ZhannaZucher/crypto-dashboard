@@ -1,18 +1,25 @@
 # Crypto Watch Tower
 
-Market data : `https://api.coingecko.com/api/v3/global`
+![NEXT.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![TS](https://img.shields.io/badge/TypeScript-F7DF1E?style=for-the-badge&logo=typescript&logoColor=black)
+![REACT](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-303540?style=for-the-badge&logo=redux&logoColor=61DAFB)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-671ddf?style=for-the-badge&logo=axios&logoColor=white)
+![Recharts](https://img.shields.io/badge/<Recharts%20/>-22b5bf?style=for-the-badge&logo=recharts&logoColor=white)
 
-All market data : `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d%2C14d%2C30d%2C200d%2C1y`
+## Presentation
 
-Coin price chart : `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${duration}${duration > 32 ? "&interval=daily" : ""}`
+The crypto Watch Tower is the app centralizing up to date crypto currencies global market data from CoinGenko API: `https://www.coingecko.com/`
 
-Coingecko : `https://www.coingecko.com/fr/pi%C3%A8ces/`
+![CWT](screenshot.png)
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Live demo of Crypto Watch Tower app is available on [here](https://crypto-dashboard-ruby.vercel.app/)
 
-## Getting Started
+## Local setup
 
-First, run the development server:
+1. Clone and/or fork this repository.
+2. Then, run the development server:
 
 ```bash
 npm run dev
@@ -20,27 +27,12 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![npm](https://img.shields.io/badge/npm-9.2.0-%23000000?style=flat-square&logo=npm&logoColor=white)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Node.js](https://img.shields.io/badge/Node.js-18.12.1-43853D?style=flat-square&logo=node.js&logoColor=white)
